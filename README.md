@@ -1,4 +1,7 @@
-# Yii2 command for fast composer packages release
+# Yii2 command for fast releasing and versioning composer packages
+This command can publish and calculate the version of the set of packages in your project at a one fast and simple run:
+```./yii release```
+
 ## Installation
 
 The preferred way to install this extension is through [composer](http://getcomposer.org/download/).
