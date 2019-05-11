@@ -13,7 +13,7 @@ use yii\base\Exception;
  */
 class ReleaseController extends Controller
 {
-    public $level = 2;
+    public $level = null;
     public $message = null;
     public $vendorFolder = null;
     /**

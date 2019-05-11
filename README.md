@@ -31,9 +31,18 @@ Add to console config folowing rules:
 ```
 
 ## Usage
-After running console command ```./yii release``` do next operations:
+All released packages must be installed with .git via --prefer-source composer flag (see [composer documentation](https://getcomposer.org/doc/03-cli.md)).
+Fast way for adding git inside installed packages:
+1. Delete them
+1. Run ```composer install --prefer-source``` for fresh install of package with git server
+
+After running console command ```./yii release``` the happen next operations:
 1. Each folder with .git, specified inside configuration file checked for new changes
-1. If has changes happen next operations:
+1. If has changes happen the next operations:
+   1. git add .
+   1. git pull origin master
+   1. git checkout master
+   1. git pull
    1. git commit with message passed via console argument --message(m) or entered inside console dialog
    1. git push
    1. Calculating and tagging new version by next rule: (major version).(minor version).(path version). Console argument --level(l)
