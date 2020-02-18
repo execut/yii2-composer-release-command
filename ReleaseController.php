@@ -92,10 +92,10 @@ class ReleaseController extends Controller
                         }
 
                         if ($this->level === null) {
-                            echo 'Enter version level, 2 - bugfix, 1 - minor, 0 - major (2 default): ';
+                            echo 'Enter version level, 2 - bugfix, 1 - minor, 0 - major (empty default): ';
                             $level = trim(fgets(STDIN));
                             if (!$level) {
-                                $level = 2;
+                                $level = 3;
                                 echo $level . "\n";
                             }
                         }  else {
@@ -103,18 +103,21 @@ class ReleaseController extends Controller
                         }
 
                         $level = (int) $level;
-                        if ($level > 2 || $level < 0) {
+                        if ($level > 3 || $level < 0) {
                             throw new Exception('Level can only be 0, 1, 2. Passed level: ' . $level);
                         }
-
-                        $nextVersion = $this->getNextVersion($level);
 
                         $commands = [
                             'git commit -m \'' . $message . '\'',
                             'git push',
-                            'git tag ' . $nextVersion,
-                            'git push --tags',
                         ];
+                        if ($level < 3) {
+                            $nextVersion = $this->getNextVersion($level);
+                            $commands = array_merge($commands, [
+                                'git tag ' . $nextVersion,
+                                'git push --tags',
+                            ]);
+                        }
 
                         foreach ($commands as $command) {
                             system($command, $result);
