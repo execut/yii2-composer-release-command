@@ -3,7 +3,7 @@
   "description": "Yii2 command for fast releasing and versioning composer packages",
   "keywords": ["yii2 packagist", "yii2 composer", "yii2 git helper"],
   "homepage": "https://github.com/execut/yii2-composer-release-command",
-  "type": "library",
+  "type": "yii2-extension",
   "license": "Apache-2.0",
   "support": {
     "issues": "https://github.com/execut/yii2-composer-release-command/issues?state=open",
