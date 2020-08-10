@@ -21,7 +21,7 @@ or add
 to the ```require``` section of your `composer.json` file.
 
 ## Configuration example
-Add to console config folowing rules:
+Add to console config following rules:
 ```php
 [
     'controllerMap' => [
